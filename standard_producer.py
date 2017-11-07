@@ -3,8 +3,8 @@ from tempfile import NamedTemporaryFile
 
 from confluent_kafka import Producer
 
-from helpers.env import topic_name, load_heroku_environmental_variables
-from helpers.kafka_settings import get_kafka_brokers
+from helpers.env import load_heroku_environmental_variables
+from helpers.kafka_settings import get_kafka_brokers, heroku_kafka_name
 
 
 def with_producer(fn):
@@ -48,7 +48,7 @@ def on_delivery(err, msg):
 @with_producer
 def produce(topic, message, kafka_producer: Producer, **kwargs):
     kafka_producer.produce(
-        topic_name(topic),  # The actual name is the topic name with the prefix from KAFKA_PREFIX
+        heroku_kafka_name(topic),  # The actual name is the topic name with the prefix from KAFKA_PREFIX
         message, on_delivery=on_delivery)
 
 
