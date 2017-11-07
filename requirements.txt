@@ -1,0 +1,13 @@
+gunicorn
+newrelic
+confluent-kafka
+tornado
+aiokafka
+
+cffi==1.8.2
+cryptography
+enum34==1.1.6
+idna==2.1
+ipaddress==1.0.17
+pyasn1==0.1.9
+pycparser==2.14
